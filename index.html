@@ -4,63 +4,48 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Family Brothers Propiedades — Comisión 1% | Las Condes</title>
-  <meta name="description" content="Family Brothers Propiedades: contrato exclusivo (90 días), boleta electrónica y abogado asociado. Comisión 1% + IVA 19%. Oficinas en Las Condes." />
+  <title>FamilyBrothers Propiedades — Comisión 1% | Las Condes</title>
+  <meta name="description" content="Vende con 1% de comisión + respaldo legal. Contrato exclusivo 90 días, boleta electrónica y abogado asociado. Oficinas en Las Condes." />
   <meta name="theme-color" content="#0b0f19" />
 
-  <meta property="og:title" content="Family Brothers Propiedades — Comisión 1%" />
-  <meta property="og:description" content="Marketing inmobiliario y respaldo legal. Comisión 1% + IVA 19%." />
-  <meta property="og:type" content="website" />
+  <!-- Metadatos sociales (sin JSON-LD) -->
+  <link rel="canonical" href="https://familybrothers.cl">
+  <meta property="og:title" content="FamilyBrothers Propiedades — Comisión 1%">
+  <meta property="og:description" content="Comisión 1% + respaldo legal. Contrato exclusivo 90 días.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://familybrothers.cl">
+  <meta property="og:image" content="https://familybrothers.cl/images/og-cover.jpg">
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=24" />
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"RealEstateAgent",
-    "name":"Family Brothers Propiedades",
-    "telephone":"+56 9 7370 6611",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Oficinas San Rosario",
-      "addressLocality": "Las Condes",
-      "addressRegion": "RM",
-      "addressCountry": "CL"
-    },
-    "areaServed": "Región Metropolitana",
-    "url":"https://familybrothers.cl",
-    "logo":"images/family-brothers-light.png"
-  }
-  </script>
+  <link rel="stylesheet" href="styles.css?v=43" />
 </head>
 <body>
+  <a class="skip-link" href="#inicio">Saltar al contenido</a>
 
   <!-- Header -->
   <header>
     <div class="container nav" role="navigation" aria-label="Principal">
-      <a class="brand" href="#inicio" aria-label="Family Brothers — Inicio">
+      <!-- LOGO grande (150px desktop / 96px móvil) -->
+      <a class="brand" href="#inicio" aria-label="Inicio">
         <img
-          src="images/family-brothers-light.png"
-          onerror="this.onerror=null;this.src='images/aurea-logo-light.png'"
-          alt="Family Brothers Propiedades"
+          src="images/logo-familybrothers-horizontal.png"
+          alt="FamilyBrothers Propiedades — Logo"
           class="brand-mark"
-          height="72" />
-        <div class="brand-text">
-          <div id="brandName">Family Brothers</div>
-          <div class="brand-claim">Propiedades</div>
-        </div>
+          decoding="async"
+        />
       </a>
 
-      <nav>
+      <button id="menuBtn" class="menu-btn" aria-label="Abrir menú" aria-controls="siteNav" aria-expanded="false">☰ Menú</button>
+
+      <nav id="siteNav">
         <ul>
           <li><a href="#seguridad">Seguridad</a></li>
           <li><a href="#confianza">Confianza</a></li>
           <li><a href="#calculadora">Calculadora</a></li>
+          <li><a href="#publicaciones">Publicaciones</a></li>
           <li><a href="#faq">Preguntas</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -123,17 +108,56 @@
     </div>
   </section>
 
-  <!-- Publicaciones (marco único premium) -->
+  <!-- Publicaciones (JPG simples) -->
   <section id="publicaciones" class="reveal">
     <div class="container">
       <h2 class="title">Publicaciones</h2>
-      <p class="subtitle">
-        Cuando cerramos una operación, la marcamos como <strong>VENDIDO</strong>. ¿Publicamos la tuya?
-      </p>
+      <p class="subtitle">Operaciones cerradas recientemente. ¿Publicamos la tuya?</p>
 
-      <div class="pub-cta glass">
-        <span class="ribbon">Tu próxima publicación</span>
-        <button class="btn alt big" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Publicar propiedad</button>
+      <div class="pub-grid">
+        <article class="pub-card card">
+          <div class="pub-media">
+            <span class="ribbon sold">VENDIDO</span>
+            <img src="images/casa-las-condes-01.jpg" alt="Casa moderna en Las Condes con jardín y piscina" loading="lazy" width="1200" height="900">
+          </div>
+          <div class="pub-body pad">
+            <h3 class="mini">Casa moderna — Las Condes</h3>
+            <p class="muted tiny">3D • 3B • 210 m² • 420 m² terreno</p>
+            <div class="pub-meta"><span class="chip">Publicada 18 días</span><span class="chip">Cierre 2025</span></div>
+            <div class="btn-row"><a class="btn ghost" href="#contacto">Cotizar similar</a></div>
+          </div>
+        </article>
+
+        <article class="pub-card card">
+          <div class="pub-media">
+            <span class="ribbon sold">VENDIDO</span>
+            <img src="images/casa-las-condes-02.jpg" alt="Casa familiar en Las Condes estilo contemporáneo" loading="lazy" width="1200" height="900">
+          </div>
+          <div class="pub-body pad">
+            <h3 class="mini">Casa familiar — Las Condes</h3>
+            <p class="muted tiny">4D • 3B • 240 m² • 500 m² terreno</p>
+            <div class="pub-meta"><span class="chip">Publicada 22 días</span><span class="chip">Cierre 2025</span></div>
+            <div class="btn-row"><a class="btn ghost" href="#contacto">Cotizar similar</a></div>
+          </div>
+        </article>
+
+        <article class="pub-card card">
+          <div class="pub-media">
+            <span class="ribbon sold">VENDIDO</span>
+            <img src="images/casa-vitacura.jpg" alt="Casa de lujo en Vitacura con fachada en piedra y vidrio" loading="lazy" width="1200" height="900">
+          </div>
+          <div class="pub-body pad">
+            <h3 class="mini">Casa de lujo — Vitacura</h3>
+            <p class="muted tiny">4D • 4B • 310 m² • 700 m² terreno</p>
+            <div class="pub-meta"><span class="chip">Publicada 30 días</span><span class="chip">Cierre 2025</span></div>
+            <div class="btn-row"><a class="btn ghost" href="#contacto">Cotizar similar</a></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="banner pad" style="margin-top:16px">
+        <span class="muted">¿Quieres ver tu propiedad aquí?</span>
+        <a class="btn alt" href="#contacto">Publicar propiedad</a>
       </div>
     </div>
   </section>
@@ -145,29 +169,10 @@
       <p class="subtitle">Confianza primero; precio justo siempre.</p>
       <div class="grid">
         <div class="col-6">
-          <div class="feature">
-            <div class="badge">1</div>
-            <div>
-              <h3>Contrato exclusivo (90 días)</h3>
-              <p class="muted">Metas y reportes semanales. 100% control del avance.</p>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="badge">2</div>
-            <div>
-              <h3>Boleta electrónica</h3>
-              <p class="muted">Formalidad tributaria y trazabilidad de honorarios.</p>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="badge">3</div>
-            <div>
-              <h3>Abogado asociado</h3>
-              <p class="muted">Revisión de promesa y escritura para un cierre seguro.</p>
-            </div>
-          </div>
+          <div class="feature"><div class="badge">1</div><div><h3>Contrato exclusivo (90 días)</h3><p class="muted">Metas y reportes semanales. 100% control del avance.</p></div></div>
+          <div class="feature"><div class="badge">2</div><div><h3>Boleta electrónica</h3><p class="muted">Formalidad tributaria y trazabilidad de honorarios.</p></div></div>
+          <div class="feature"><div class="badge">3</div><div><h3>Abogado asociado</h3><p class="muted">Revisión de promesa y escritura para un cierre seguro.</p></div></div>
         </div>
-
         <div class="col-6">
           <div class="card pad soft">
             <h3>Checklist de documentos</h3>
@@ -185,7 +190,7 @@
     </div>
   </section>
 
-  <!-- Confianza -->
+  <!-- Confianza (mapa con iframe directo) -->
   <section id="confianza" class="confianza reveal">
     <div class="container">
       <h2 class="title">Confianza & Cumplimiento</h2>
@@ -193,10 +198,7 @@
         <div class="col-6">
           <div class="card pad">
             <h3 class="mini">Quiénes somos</h3>
-            <p class="muted">
-              Equipo profesional enfocado en <strong>marketing inmobiliario</strong> y
-              <strong> acompañamiento legal</strong> para dueños que quieren vender mejor y más rápido.
-            </p>
+            <p class="muted">Equipo profesional enfocado en <strong>marketing inmobiliario</strong> y <strong>acompañamiento legal</strong>.</p>
             <ul class="muted trust-ul">
               <li>Boleta electrónica por honorarios.</li>
               <li>Contrato exclusivo, metas y reportes.</li>
@@ -210,8 +212,9 @@
             <h3 class="mini">Oficinas</h3>
             <p class="muted">San Rosario, Las Condes</p>
             <div class="map-wrap">
-              <iframe class="gmap" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Oficinas%20San%20Rosario%2C%20Las%20Condes&output=embed"></iframe>
+              <iframe class="gmap" loading="eager" referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Oficinas%20San%20Rosario%2C%20Las%20Condes&output=embed"
+                title="Mapa Oficina San Rosario"></iframe>
             </div>
           </div>
         </div>
@@ -219,24 +222,19 @@
     </div>
   </section>
 
-  <!-- Calculadora (1% + IVA 19%, paga vendedor) -->
+  <!-- Calculadora -->
   <section id="calculadora" class="reveal">
     <div class="container">
       <h2 class="title">Calcula tu comisión (CLP)</h2>
       <p class="subtitle">El <strong>vendedor</strong> paga la comisión. Por defecto: <strong>1%</strong> + <strong>IVA 19%</strong>.</p>
 
       <div class="calc card pad">
-        <!-- Entrada -->
         <div class="calc-left">
           <label for="precioCLP" class="calc-label">Precio de venta (CLP)</label>
-          <div class="input-clp">
-            <span class="prefix">$</span>
-            <input id="precioCLP" class="input" type="text" inputmode="numeric" placeholder="350000000" aria-label="Precio de venta en pesos" />
-          </div>
+          <div class="input-clp"><span class="prefix">$</span><input id="precioCLP" class="input" type="text" inputmode="numeric" placeholder="350000000" aria-label="Precio de venta en pesos" /></div>
           <p class="note muted">La comisión se calcula sobre el precio final. Comisión: <strong>1%</strong>. IVA aplicado: <strong>19%</strong>.</p>
         </div>
 
-        <!-- Salida -->
         <div class="calc-right">
           <div class="stat"><span class="muted">Subtotal (1%)</span><strong id="comisionBase">$0</strong></div>
           <div class="stat"><span class="muted">IVA 19%</span><strong id="comisionIVA">$0</strong></div>
@@ -257,16 +255,16 @@
   <section id="faq" class="reveal">
     <div class="container">
       <h2 class="title">Preguntas frecuentes</h2>
-      <div class="accordion">
-        <button class="ac-item" aria-expanded="false"><span>¿Por qué pagar menos comisión?</span><i></i></button>
-        <div class="ac-panel"><p>Modelo digital, procesos simples y foco en difusión efectiva. Menos costos fijos, misma calidad.</p></div>
+    <div class="accordion">
+      <button class="ac-item" aria-expanded="false" aria-controls="faq1" id="q1"><span>¿Por qué pagar menos comisión?</span><i></i></button>
+      <div class="ac-panel" id="faq1" role="region" aria-labelledby="q1"><p>Modelo digital, procesos simples y foco en difusión efectiva. Menos costos fijos, misma calidad.</p></div>
 
-        <button class="ac-item" aria-expanded="false"><span>¿El contrato es exclusivo?</span><i></i></button>
-        <div class="ac-panel"><p>Sí. Exclusividad por 90 días con metas y reportes semanales del avance comercial.</p></div>
+      <button class="ac-item" aria-expanded="false" aria-controls="faq2" id="q2"><span>¿El contrato es exclusivo?</span><i></i></button>
+      <div class="ac-panel" id="faq2" role="region" aria-labelledby="q2"><p>Sí. Exclusividad por 90 días con metas y reportes semanales del avance comercial.</p></div>
 
-        <button class="ac-item" aria-expanded="false"><span>¿Cómo resguardan el cierre?</span><i></i></button>
-        <div class="ac-panel"><p>Abogado asociado revisa promesa y escritura. Boleta electrónica por honorarios.</p></div>
-      </div>
+      <button class="ac-item" aria-expanded="false" aria-controls="faq3" id="q3"><span>¿Cómo resguardan el cierre?</span><i></i></button>
+      <div class="ac-panel" id="faq3" role="region" aria-labelledby="q3"><p>Abogado asociado revisa promesa y escritura. Boleta electrónica por honorarios.</p></div>
+    </div>
     </div>
   </section>
 
@@ -278,37 +276,20 @@
 
       <div class="grid">
         <div class="col-6">
-          <!-- FORM -->
           <form id="contactForm" class="card pad" action="https://formsubmit.co/cristobalreimundotr@gmail.com" method="POST">
-            <div class="field">
-              <label for="nombre">Nombre</label>
-              <input class="input" id="nombre" name="Nombre" placeholder="Tu nombre" required />
-            </div>
-
-            <div class="field">
-              <label for="email">Email</label>
-              <input class="input" id="email" name="Email" type="email" placeholder="tucorreo@ejemplo.com" required />
-            </div>
-
-            <div class="field">
-              <label for="mensaje">Mensaje</label>
-              <textarea class="input" id="mensaje" name="Mensaje" rows="5" placeholder="Comuna, m², dormitorios, precio aprox…" required></textarea>
-            </div>
-
-            <div class="btn-row">
-              <button class="btn dark" type="submit">Enviar</button>
-              <a class="btn ghost" id="whatsBtn" href="#">WhatsApp directo</a>
-            </div>
-            <p id="formMsg" class="muted"></p>
-
-            <!-- FormSubmit (ocultos) -->
-            <input type="hidden" name="_subject" value="Nueva cotización — Family Brothers">
+            <div class="field"><label for="nombre">Nombre</label><input class="input" id="nombre" name="Nombre" placeholder="Tu nombre" required /></div>
+            <div class="field"><label for="email">Email</label><input class="input" id="email" name="Email" type="email" placeholder="tucorreo@ejemplo.com" required /></div>
+            <div class="field"><label for="mensaje">Mensaje</label><textarea class="input" id="mensaje" name="Mensaje" rows="5" placeholder="Comuna, m², dormitorios, precio aprox…" required></textarea></div>
+            <div class="btn-row"><button class="btn dark" type="submit">Enviar</button><a class="btn ghost" id="whatsBtn" href="#">WhatsApp directo</a></div>
+            <p id="formMsg" class="muted" role="status" aria-live="polite"></p>
+            <!-- FormSubmit ocultos -->
+            <input type="hidden" name="_subject" value="Nueva cotización — FamilyBrothers">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_autoresponse" value="¡Gracias! Recibimos tu solicitud. Te contactaremos a la brevedad.">
             <input type="hidden" id="nextField" name="_next" value="">
             <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
-            <input type="hidden" name="Origen" value="Formulario web Family Brothers">
+            <input type="hidden" name="Origen" value="Formulario web FamilyBrothers">
           </form>
         </div>
 
@@ -319,11 +300,7 @@
             <p class="muted">Teléfono/WhatsApp: <a href="#" id="phoneLink">+56 9 7370 6611</a></p>
             <p class="muted">Oficinas: San Rosario, Las Condes</p>
             <p class="muted">Horario: L–V 09:00–19:00</p>
-            <div class="chips">
-              <span class="chip">Boleta electrónica</span>
-              <span class="chip">Contrato exclusivo</span>
-              <span class="chip">Abogado asociado</span>
-            </div>
+            <div class="chips"><span class="chip">Boleta electrónica</span><span class="chip">Contrato exclusivo</span><span class="chip">Abogado asociado</span></div>
           </div>
         </div>
       </div>
@@ -333,15 +310,11 @@
   <!-- Footer -->
   <footer>
     <div class="container foot">
-      <div class="muted">© <span id="year"></span> <span id="brandNameFoot">Family Brothers</span>. Todos los derechos reservados.</div>
-      <div class="links">
-        <a class="muted" href="#inicio">Inicio</a><span class="muted">·</span>
-        <a class="muted" href="#seguridad">Seguridad</a><span class="muted">·</span>
-        <a class="muted" href="#contacto">Contacto</a>
-      </div>
+      <div class="muted">© <span id="year"></span> FamilyBrothers. Todos los derechos reservados.</div>
+      <div class="links"><a class="muted" href="#inicio">Inicio</a><span class="muted">·</span><a class="muted" href="#seguridad">Seguridad</a><span class="muted">·</span><a class="muted" href="#contacto">Contacto</a></div>
     </div>
   </footer>
 
-  <script src="app.js?v=24" defer></script>
+  <script src="app.js?v=43" defer></script>
 </body>
 </html>

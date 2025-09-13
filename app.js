@@ -1,18 +1,15 @@
 // ===== Config =====
-const BRAND_NAME = 'Family Brothers';
-const PHONE_E164 = '+56973706611'; // WhatsApp / Teléfono oficial
+const BRAND_NAME = 'FamilyBrothers';
+const PHONE_E164 = '+56973706611';
 const WHATS_TEXT_DEFAULT = encodeURIComponent('Hola, quiero cotizar la venta de mi propiedad.');
 
-// Branding dinámico
-document.getElementById('brandName') && (document.getElementById('brandName').textContent = BRAND_NAME);
-document.getElementById('brandNameFoot') && (document.getElementById('brandNameFoot').textContent = BRAND_NAME);
+// Año en footer
 document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
 
-// WhatsApp & Tel en contacto (no en header)
+// WhatsApp & Tel
 (function(){
   const whatsURL = `https://wa.me/${PHONE_E164.replace('+','')}?text=${WHATS_TEXT_DEFAULT}`;
-  const btns = ['whatsBtn','calcWhats'];
-  btns.forEach(id => {
+  ['whatsBtn','calcWhats'].forEach(id => {
     const el = document.getElementById(id);
     if(el) el.setAttribute('href', whatsURL);
   });
@@ -23,7 +20,7 @@ document.getElementById('year') && (document.getElementById('year').textContent 
   }
 })();
 
-// ===== Header sombra on scroll =====
+// Header sombra on scroll
 (function(){
   const h = document.querySelector('header');
   if(!h) return;
@@ -32,26 +29,36 @@ document.getElementById('year') && (document.getElementById('year').textContent 
   window.addEventListener('scroll', onScroll, { passive:true });
 })();
 
-// ===== Reveal on scroll =====
+// Menú móvil
+(function(){
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('siteNav');
+  if (!btn || !nav) return;
+
+  function setOpen(open){
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  }
+  btn.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> setOpen(false)));
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') setOpen(false); });
+})();
+
+// Reveal on scroll
 (function setupReveal(){
   const targets = document.querySelectorAll('.reveal');
   const showAll = () => targets.forEach(el => el.classList.add('visible'));
   try {
     if (!('IntersectionObserver' in window)) { showAll(); return; }
     const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
     targets.forEach(el => io.observe(el));
     setTimeout(showAll, 1200);
   } catch { showAll(); }
 })();
 
-// ===== KPI counter (50 / 3 / 5) =====
+// KPI counters
 (function animateCounters(){
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const nums = document.querySelectorAll('.kpi-num');
@@ -76,7 +83,7 @@ document.getElementById('year') && (document.getElementById('year').textContent 
   nums.forEach(n => io.observe(n));
 })();
 
-// ===== FAQ accordion =====
+// FAQ accordion
 document.querySelectorAll('.ac-item').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -86,7 +93,7 @@ document.querySelectorAll('.ac-item').forEach(btn=>{
   });
 });
 
-// ===== Calculadora CLP (1% + IVA 19%) =====
+// Calculadora CLP (1% + IVA 19%)
 (function setupCalc(){
   const precioCLP   = document.getElementById('precioCLP');
   const baseOut     = document.getElementById('comisionBase');
@@ -140,7 +147,7 @@ document.querySelectorAll('.ac-item').forEach(btn=>{
   calc();
 })();
 
-// ===== Formulario (FormSubmit feedback & _next) =====
+// FormSubmit (_next + feedback)
 (function(){
   const form = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
