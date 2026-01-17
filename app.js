@@ -1,10 +1,13 @@
 // ===== Config =====
 const BRAND_NAME = 'FamilyBrothers';
 const PHONE_E164 = '+56973706611';
-const WHATS_TEXT_DEFAULT = encodeURIComponent('Hola, quiero cotizar la venta de mi propiedad.');
+const WHATS_TEXT_DEFAULT = encodeURIComponent(
+  'Hola, quiero cotizar la venta de mi propiedad.'
+);
 
 // Año en footer
-document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // WhatsApp & Tel
 (function(){
@@ -39,23 +42,45 @@ document.getElementById('year') && (document.getElementById('year').textContent 
     nav.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', String(open));
   }
-  btn.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> setOpen(false)));
-  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') setOpen(false); });
+
+  btn.addEventListener('click', () =>
+    setOpen(!nav.classList.contains('open'))
+  );
+
+  nav.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', ()=> setOpen(false))
+  );
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') setOpen(false);
+  });
 })();
 
 // Reveal on scroll
 (function setupReveal(){
   const targets = document.querySelectorAll('.reveal');
   const showAll = () => targets.forEach(el => el.classList.add('visible'));
+
   try {
-    if (!('IntersectionObserver' in window)) { showAll(); return; }
+    if (!('IntersectionObserver' in window)) {
+      showAll();
+      return;
+    }
+
     const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
     }, { rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
+
     targets.forEach(el => io.observe(el));
     setTimeout(showAll, 1200);
-  } catch { showAll(); }
+  } catch {
+    showAll();
+  }
 })();
 
 // KPI counters
@@ -67,25 +92,37 @@ document.getElementById('year') && (document.getElementById('year').textContent 
   const io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(!entry.isIntersecting) return;
+
       const el = entry.target;
       const end = Number(el.dataset.count || 0) || 0;
-      if (prefersReduced) { el.textContent = end; io.unobserve(el); return; }
+
+      if (prefersReduced) {
+        el.textContent = end;
+        io.unobserve(el);
+        return;
+      }
 
       let cur = 0;
-      const step = Math.max(1, Math.ceil(end/40));
-      const t = setInterval(()=>{
-        cur += step; if(cur>=end){cur=end; clearInterval(t);}
+      const step = Math.max(1, Math.ceil(end / 40));
+      const t = setInterval(() => {
+        cur += step;
+        if(cur >= end){
+          cur = end;
+          clearInterval(t);
+        }
         el.textContent = String(cur);
       }, 25);
+
       io.unobserve(el);
-    })
-  }, {threshold:.45});
+    });
+  }, { threshold: .45 });
+
   nums.forEach(n => io.observe(n));
 })();
 
 // FAQ accordion
-document.querySelectorAll('.ac-item').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
+document.querySelectorAll('.ac-item').forEach(btn => {
+  btn.addEventListener('click', () => {
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!expanded));
     const panel = btn.nextElementSibling;
@@ -93,30 +130,38 @@ document.querySelectorAll('.ac-item').forEach(btn=>{
   });
 });
 
-// Calculadora CLP (1% + IVA 19%)
+// ===============================
+// CALCULADORA CLP (2% + IVA 19%)
+// ===============================
 (function setupCalc(){
-  const precioCLP   = document.getElementById('precioCLP');
-  const baseOut     = document.getElementById('comisionBase');
-  const ivaOut      = document.getElementById('comisionIVA');
-  const totalOut    = document.getElementById('comisionTotal');
-  const calcWhats   = document.getElementById('calcWhats');
+  const precioCLP = document.getElementById('precioCLP');
+  const baseOut   = document.getElementById('comisionBase');
+  const ivaOut    = document.getElementById('comisionIVA');
+  const totalOut  = document.getElementById('comisionTotal');
+  const calcWhats = document.getElementById('calcWhats');
 
   if(!precioCLP || !baseOut || !ivaOut || !totalOut) return;
 
-  const PCT = 0.01;  // 1%
-  const IVA = 0.19;  // 19%
+  const PCT = 0.02; // 2%
+  const IVA = 0.19; // 19%
 
-  const formatCLP = n => n.toLocaleString('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0});
-  const parseCLP  = str => {
-    const digits = (str||'').toString().replace(/\D+/g,'');
+  const formatCLP = n =>
+    n.toLocaleString('es-CL', {
+      style:'currency',
+      currency:'CLP',
+      maximumFractionDigits:0
+    });
+
+  const parseCLP = str => {
+    const digits = (str || '').toString().replace(/\D+/g,'');
     return digits ? Number(digits) : 0;
   };
 
   function calc(){
     const precio = parseCLP(precioCLP.value);
-    const base = Math.round(precio * PCT);
-    const iva  = Math.round(base * IVA);
-    const total = base + iva;
+    const base   = Math.round(precio * PCT);
+    const iva    = Math.round(base * IVA);
+    const total  = base + iva;
 
     baseOut.textContent  = formatCLP(base);
     ivaOut.textContent   = formatCLP(iva);
@@ -124,27 +169,29 @@ document.querySelectorAll('.ac-item').forEach(btn=>{
 
     if(calcWhats){
       const msg = encodeURIComponent(
-        `Hola, quiero cotizar.\n` +
+        `Hola, quiero cotizar la venta de mi propiedad.\n` +
         `Precio de venta: ${formatCLP(precio)}\n` +
-        `Comisión: 1% + IVA 19% → ${formatCLP(total)} (paga el vendedor).`
+        `Comisión: 2% + IVA 19%\n` +
+        `Total estimado: ${formatCLP(total)} (paga el vendedor).`
       );
-      calcWhats.setAttribute('href', `https://wa.me/${PHONE_E164.replace('+','')}?text=${msg}`);
+      calcWhats.href = `https://wa.me/${PHONE_E164.replace('+','')}?text=${msg}`;
     }
   }
 
   function formatOnInput(e){
     const raw = parseCLP(e.target.value);
-    e.target.value = raw ? formatCLP(raw).replace(/\$\s?/, '') : '';
+    e.target.value = raw
+      ? formatCLP(raw).replace(/\$\s?/, '')
+      : '';
     calc();
   }
 
   precioCLP.addEventListener('input', formatOnInput, { passive:true });
   precioCLP.addEventListener('blur', calc, { passive:true });
 
-  // valores iniciales
+  // Valor inicial
   precioCLP.value = '350000000';
   formatOnInput({ target: precioCLP });
-  calc();
 })();
 
 // FormSubmit (_next + feedback)
@@ -159,11 +206,16 @@ document.querySelectorAll('.ac-item').forEach(btn=>{
     nextField.value = nextUrl;
   }
 
-  form.addEventListener('submit', ()=>{ if(formMsg) formMsg.textContent = 'Enviando…'; });
+  form.addEventListener('submit', () => {
+    if(formMsg) formMsg.textContent = 'Enviando…';
+  });
 
   const params = new URLSearchParams(location.search);
   if(params.get('enviado') === '1'){
-    if(formMsg) formMsg.textContent = '¡Gracias! Recibimos tu mensaje. Te responderemos en minutos.';
+    if(formMsg) {
+      formMsg.textContent =
+        '¡Gracias! Recibimos tu mensaje. Te responderemos en minutos.';
+    }
     history.replaceState({}, '', location.pathname + '#contacto');
   }
 })();
