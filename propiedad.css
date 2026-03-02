@@ -1166,4 +1166,54 @@
   * {
     transition-duration: 0.01ms !important;
   }
+}/* ===== CERCANÍAS ORDENADAS PRO ===== */
+
+#near {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 40px;
+  margin-top: 20px;
+}
+
+.near-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.near-block-title {
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.near-block-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.near-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.near-name {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.near-dist {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #near {
+    grid-template-columns: 1fr;
+  }
 }

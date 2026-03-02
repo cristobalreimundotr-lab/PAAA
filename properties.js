@@ -1,25 +1,57 @@
-// properties.js ✅ SOLO DATOS
+// ============================
+// properties.js (COMPLETO)
+// ============================
+
 window.PROPERTIES = {
   "FB-STGO-001": {
-    titulo: "Departamento 2D/2B — San Francisco 335",
+    // Info básica
+    titulo: "Home Studio 1D/1B — San Francisco 335",
     comuna: "Santiago Centro",
     direccion: "San Francisco 335",
-    precio: "$50.000.000",
 
-    dormitorios: 2,
-    banos: 2,
-    mtUtil: 48,
-    mtTotal: 52,
+    // Precios
+    precio: "$50.490.000",
+    precioUF: "UF 1.269",
+
+    // Características
+    dormitorios: 1,
+    banos: 1,
+    mtUtil: 21,
+    mtTotal: 24,
+
+    // Amenities
     estacionamiento: false,
     bodega: false,
 
+    // Descripción
     descripcion:
-      "Departamento con excelente conectividad en Santiago Centro. Ideal para inversión o primera vivienda. Ubicado a pasos de Metro Parque Almagro y cercano a universidades, supermercados y servicios. Alta demanda de arriendo en el sector.",
+      "Home Studio de 21 m² en el corazón de Santiago Centro. Ideal para inversión o primer departamento. Excelente conectividad a pasos de Metro Parque Almagro, cercano a universidades, supermercados y servicios. Alta demanda de arriendo en el sector, perfecto para estudiantes o profesionales.",
 
-    fotos: [],
+    // ✅ FOTOS (ASEGÚRATE QUE EXISTAN EN /images/ CON ESTOS NOMBRES + .jpg)
+    // IMPORTANTE: NO uses "baño" con Ñ. Renombra a "bano.jpg"
+    fotos: [
+      "images/35924.jpg",
+      "images/35919.jpg",
+      "images/35910.jpg",
+      "images/35916.jpg",
+      "images/bano.jpeg",
+      "images/piscina.jpeg"
+    ],
 
+    // ✅ MAPA (se usa mapsQuery para construir el iframe)
     mapsQuery: "San Francisco 335, Santiago, Chile",
 
+    // WhatsApp
+    whatsapp: "56973706611",
+
+    // Agente
+    agente: {
+      nombre: "Cristóbal Reimundo",
+      telefono: "56973706611",
+      email: "cristobalreimund@gmail.com"
+    },
+
+    // ✅ CERCANÍAS (OBJETO CON CATEGORÍAS)
     cercanias: {
       metro: [
         { nombre: "Metro Parque Almagro (L3)", distancia: "8 min caminando" },
@@ -35,9 +67,7 @@ window.PROPERTIES = {
         { nombre: "Líder Express", distancia: "9 min caminando" },
         { nombre: "Unimarc", distancia: "10 min caminando" }
       ],
-      parques: [
-        { nombre: "Parque Almagro", distancia: "8 min caminando" }
-      ]
+      parques: [{ nombre: "Parque Almagro", distancia: "8 min caminando" }]
     }
   }
 };
