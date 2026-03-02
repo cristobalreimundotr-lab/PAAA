@@ -1,221 +1,356 @@
-// ===== Config =====
-const BRAND_NAME = 'FamilyBrothers';
-const PHONE_E164 = '+56973706611';
-const WHATS_TEXT_DEFAULT = encodeURIComponent(
-  'Hola, quiero cotizar la venta de mi propiedad.'
-);
+// ===== CONFIGURACIÓN =====
+const CONFIG = {
+  BRAND_NAME: 'FamilyBrothers',
+  PHONE_E164: '+56933857105',
+  WHATSAPP_MESSAGE: 'Hola, quiero cotizar la venta de mi propiedad.',
+  COMISION_PCT: 0.02,
+  IVA_PCT: 0.19
+};
 
-// Año en footer
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-// WhatsApp & Tel
-(function(){
-  const whatsURL = `https://wa.me/${PHONE_E164.replace('+','')}?text=${WHATS_TEXT_DEFAULT}`;
-  ['whatsBtn','calcWhats'].forEach(id => {
-    const el = document.getElementById(id);
-    if(el) el.setAttribute('href', whatsURL);
+// ===== UTILIDADES =====
+const formatCLP = (n) => {
+  return n.toLocaleString('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+    maximumFractionDigits: 0
   });
-  const phoneLink = document.getElementById('phoneLink');
-  if (phoneLink){
-    phoneLink.setAttribute('href', `tel:${PHONE_E164}`);
-    phoneLink.textContent = '+56 9 7370 6611';
-  }
-})();
+};
 
-// Header sombra on scroll
-(function(){
-  const h = document.querySelector('header');
-  if(!h) return;
-  const onScroll = () => h.classList.toggle('scrolled', window.scrollY > 10);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive:true });
-})();
+const parseCLP = (str) => {
+  const digits = (str || '').toString().replace(/\D+/g, '');
+  return digits ? Number(digits) : 0;
+};
 
-// Menú móvil
-(function(){
-  const btn = document.getElementById('menuBtn');
-  const nav = document.getElementById('siteNav');
-  if (!btn || !nav) return;
-
-  function setOpen(open){
-    nav.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', String(open));
-  }
-
-  btn.addEventListener('click', () =>
-    setOpen(!nav.classList.contains('open'))
-  );
-
-  nav.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', ()=> setOpen(false))
-  );
-
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') setOpen(false);
-  });
-})();
-
-// Reveal on scroll
-(function setupReveal(){
-  const targets = document.querySelectorAll('.reveal');
-  const showAll = () => targets.forEach(el => el.classList.add('visible'));
-
-  try {
-    if (!('IntersectionObserver' in window)) {
-      showAll();
-      return;
-    }
-
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
-
-    targets.forEach(el => io.observe(el));
-    setTimeout(showAll, 1200);
-  } catch {
-    showAll();
-  }
-})();
-
-// KPI counters
-(function animateCounters(){
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const nums = document.querySelectorAll('.kpi-num');
-  if(!nums.length) return;
-
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(!entry.isIntersecting) return;
-
-      const el = entry.target;
-      const end = Number(el.dataset.count || 0) || 0;
-
-      if (prefersReduced) {
-        el.textContent = end;
-        io.unobserve(el);
-        return;
-      }
-
-      let cur = 0;
-      const step = Math.max(1, Math.ceil(end / 40));
-      const t = setInterval(() => {
-        cur += step;
-        if(cur >= end){
-          cur = end;
-          clearInterval(t);
-        }
-        el.textContent = String(cur);
-      }, 25);
-
-      io.unobserve(el);
-    });
-  }, { threshold: .45 });
-
-  nums.forEach(n => io.observe(n));
-})();
-
-// FAQ accordion
-document.querySelectorAll('.ac-item').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    const panel = btn.nextElementSibling;
-    panel.classList.toggle('open', !expanded);
-  });
+// ===== INICIALIZACIÓN =====
+document.addEventListener('DOMContentLoaded', () => {
+  initYear();
+  initHeader();
+  initNavigation();
+  initReveal();
+  initCounters();
+  initCalculator();
+  initFAQ();
+  initWhatsApp();
+  initForm();
+  initSmoothScroll();
 });
 
-// ===============================
-// CALCULADORA CLP (2% + IVA 19%)
-// ===============================
-(function setupCalc(){
-  const precioCLP = document.getElementById('precioCLP');
-  const baseOut   = document.getElementById('comisionBase');
-  const ivaOut    = document.getElementById('comisionIVA');
-  const totalOut  = document.getElementById('comisionTotal');
-  const calcWhats = document.getElementById('calcWhats');
+// ===== AÑO EN FOOTER =====
+function initYear() {
+  const yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+}
 
-  if(!precioCLP || !baseOut || !ivaOut || !totalOut) return;
-
-  const PCT = 0.02; // 2%
-  const IVA = 0.19; // 19%
-
-  const formatCLP = n =>
-    n.toLocaleString('es-CL', {
-      style:'currency',
-      currency:'CLP',
-      maximumFractionDigits:0
-    });
-
-  const parseCLP = str => {
-    const digits = (str || '').toString().replace(/\D+/g,'');
-    return digits ? Number(digits) : 0;
-  };
-
-  function calc(){
-    const precio = parseCLP(precioCLP.value);
-    const base   = Math.round(precio * PCT);
-    const iva    = Math.round(base * IVA);
-    const total  = base + iva;
-
-    baseOut.textContent  = formatCLP(base);
-    ivaOut.textContent   = formatCLP(iva);
-    totalOut.textContent = formatCLP(total);
-
-    if(calcWhats){
-      const msg = encodeURIComponent(
-        `Hola, quiero cotizar la venta de mi propiedad.\n` +
-        `Precio de venta: ${formatCLP(precio)}\n` +
-        `Comisión: 2% + IVA 19%\n` +
-        `Total estimado: ${formatCLP(total)} (paga el vendedor).`
-      );
-      calcWhats.href = `https://wa.me/${PHONE_E164.replace('+','')}?text=${msg}`;
+// ===== HEADER SCROLL =====
+function initHeader() {
+  const header = document.getElementById('mainHeader');
+  if (!header) return;
+  
+  let lastScroll = 0;
+  
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+    
+    // Sombra al hacer scroll
+    header.classList.toggle('scrolled', currentScroll > 50);
+    
+    // Ocultar/mostrar en móvil al scrollear hacia abajo
+    if (window.innerWidth <= 768) {
+      if (currentScroll > lastScroll && currentScroll > 200) {
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        header.style.transform = 'translateY(0)';
+      }
     }
-  }
+    
+    lastScroll = currentScroll;
+  };
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+}
 
-  function formatOnInput(e){
+// ===== NAVEGACIÓN MÓVIL =====
+function initNavigation() {
+  const menuBtn = document.getElementById('menuBtn');
+  const siteNav = document.getElementById('siteNav');
+  
+  if (!menuBtn || !siteNav) return;
+  
+  const toggleMenu = () => {
+    const isOpen = siteNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  
+  menuBtn.addEventListener('click', toggleMenu);
+  
+  // Cerrar al hacer click en un link
+  siteNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      siteNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+  
+  // Cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && siteNav.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+
+// ===== ANIMACIÓN REVEAL =====
+function initReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  reveals.forEach(el => observer.observe(el));
+}
+
+// ===== CONTADORES ANIMADOS =====
+function initCounters() {
+  const counters = document.querySelectorAll('.kpi-num');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10) || 0;
+      const duration = 2000;
+      const startTime = performance.now();
+      
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing ease-out
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeOut * target);
+        
+        el.textContent = current;
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          el.textContent = target;
+        }
+      };
+      
+      requestAnimationFrame(animate);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  
+  counters.forEach(counter => observer.observe(counter));
+}
+
+// ===== CALCULADORA =====
+function initCalculator() {
+  const precioInput = document.getElementById('precioCLP');
+  const baseOut = document.getElementById('comisionBase');
+  const ivaOut = document.getElementById('comisionIVA');
+  const totalOut = document.getElementById('comisionTotal');
+  const ahorroOut = document.getElementById('ahorroValor');
+  const calcWhats = document.getElementById('calcWhats');
+  const quickBtns = document.querySelectorAll('.quick-btn');
+  
+  if (!precioInput) return;
+  
+  const calculate = () => {
+    const precio = parseCLP(precioInput.value);
+    const base = Math.round(precio * CONFIG.COMISION_PCT);
+    const iva = Math.round(base * CONFIG.IVA_PCT);
+    const total = base + iva;
+    const ahorro = Math.round(precio * 0.04) - total; // Diferencia vs 4%
+    
+    // Animar valores
+    animateValue(baseOut, base);
+    animateValue(ivaOut, iva);
+    animateValue(totalOut, total);
+    animateValue(ahorroOut, ahorro);
+    
+    // Actualizar WhatsApp
+    if (calcWhats) {
+      const message = encodeURIComponent(
+        `Hola, quiero cotizar la venta de mi propiedad.\n\n` +
+        `💰 Precio: ${formatCLP(precio)}\n` +
+        `📊 Comisión 2% + IVA: ${formatCLP(total)}\n` +
+        `💡 Ahorro vs 4%: ${formatCLP(ahorro)}`
+      );
+      calcWhats.href = `https://wa.me/${CONFIG.PHONE_E164.replace('+', '')}?text=${message}`;
+    }
+  };
+  
+  const animateValue = (el, value) => {
+    el.style.opacity = '0';
+    setTimeout(() => {
+      el.textContent = formatCLP(value).replace('$', '$ ');
+      el.style.opacity = '1';
+    }, 150);
+  };
+  
+  // Formato en tiempo real
+  precioInput.addEventListener('input', (e) => {
     const raw = parseCLP(e.target.value);
-    e.target.value = raw
-      ? formatCLP(raw).replace(/\$\s?/, '')
-      : '';
-    calc();
-  }
-
-  precioCLP.addEventListener('input', formatOnInput, { passive:true });
-  precioCLP.addEventListener('blur', calc, { passive:true });
-
+    if (raw > 0) {
+      e.target.value = formatCLP(raw).replace(/\$\s?/, '').replace(/\s/g, '.');
+    }
+    calculate();
+  });
+  
+  // Botones rápidos
+  quickBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const value = btn.dataset.value;
+      precioInput.value = formatCLP(Number(value)).replace(/\$\s?/, '').replace(/\s/g, '.');
+      calculate();
+      
+      // Efecto visual
+      btn.style.transform = 'scale(0.95)';
+      setTimeout(() => btn.style.transform = '', 150);
+    });
+  });
+  
   // Valor inicial
-  precioCLP.value = '350000000';
-  formatOnInput({ target: precioCLP });
-})();
+  precioInput.value = '350.000.000';
+  calculate();
+}
 
-// FormSubmit (_next + feedback)
-(function(){
+// ===== FAQ ACCORDION =====
+function initFAQ() {
+  const items = document.querySelectorAll('.faq-item');
+  
+  items.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    
+    question.addEventListener('click', () => {
+      const isOpen = question.getAttribute('aria-expanded') === 'true';
+      
+      // Cerrar todos los demás
+      items.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          otherItem.querySelector('.faq-answer').classList.remove('active');
+        }
+      });
+      
+      // Toggle actual
+      question.setAttribute('aria-expanded', !isOpen);
+      answer.classList.toggle('active', !isOpen);
+    });
+  });
+}
+
+// ===== WHATSAPP LINKS =====
+function initWhatsApp() {
+  const whatsUrl = `https://wa.me/${CONFIG.PHONE_E164.replace('+', '')}?text=${encodeURIComponent(CONFIG.WHATSAPP_MESSAGE)}`;
+  
+  ['whatsBtn', 'calcWhats'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && id !== 'calcWhats') el.href = whatsUrl;
+  });
+  
+  const phoneLink = document.getElementById('phoneLink');
+  if (phoneLink) {
+    phoneLink.href = `tel:${CONFIG.PHONE_E164}`;
+    phoneLink.textContent = '+56 9 7370 6611';
+  }
+}
+
+// ===== FORMULARIO =====
+function initForm() {
   const form = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
-  if(!form) return;
-
   const nextField = document.getElementById('nextField');
-  if(nextField){
-    const nextUrl = location.origin + location.pathname + '?enviado=1#contacto';
-    nextField.value = nextUrl;
+  
+  if (!form) return;
+  
+  // Configurar URL de retorno
+  if (nextField) {
+    const returnUrl = `${window.location.origin}${window.location.pathname}?enviado=1#contacto`;
+    nextField.value = returnUrl;
   }
-
-  form.addEventListener('submit', () => {
-    if(formMsg) formMsg.textContent = 'Enviando…';
-  });
-
-  const params = new URLSearchParams(location.search);
-  if(params.get('enviado') === '1'){
-    if(formMsg) {
-      formMsg.textContent =
-        '¡Gracias! Recibimos tu mensaje. Te responderemos en minutos.';
+  
+  // Enviar
+  form.addEventListener('submit', (e) => {
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.innerHTML = '<span>Enviando...</span>';
+    
+    if (formMsg) {
+      formMsg.textContent = 'Enviando tu solicitud...';
+      formMsg.className = 'form-message';
     }
-    history.replaceState({}, '', location.pathname + '#contacto');
+  });
+  
+  // Mensaje de éxito
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('enviado') === '1') {
+    if (formMsg) {
+      formMsg.textContent = '¡Gracias! Recibimos tu mensaje. Te contactaremos en menos de 5 minutos.';
+      formMsg.className = 'form-message success';
+    }
+    
+    // Limpiar URL
+    window.history.replaceState({}, '', window.location.pathname + '#contacto');
+    
+    // Scroll al mensaje
+    formMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
-})();
+}
+
+// ===== SMOOTH SCROLL =====
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        
+        const headerOffset = 100;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// ===== EFECTOS ADICIONALES =====
+// Parallax suave en hero
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg && scrolled < window.innerHeight) {
+    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+  }
+});
+
+// Prefers reduced motion
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.style.scrollBehavior = 'auto';
+}

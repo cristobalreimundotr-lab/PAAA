@@ -8,7 +8,6 @@
   <meta name="description" content="Vende con 2% de comisión + respaldo legal. Contrato exclusivo 90 días, boleta electrónica y abogado asociado. Oficinas en Las Condes." />
   <meta name="theme-color" content="#0b0f19" />
 
-  <!-- Metadatos sociales (sin JSON-LD) -->
   <link rel="canonical" href="https://familybrothers.cl">
   <meta property="og:title" content="FamilyBrothers Propiedades — Comisión 2%">
   <meta property="og:description" content="Comisión 2% + respaldo legal. Contrato exclusivo 90 días.">
@@ -16,273 +15,538 @@
   <meta property="og:url" content="https://familybrothers.cl">
   <meta property="og:image" content="https://familybrothers.cl/images/og-cover.jpg">
 
-  <!-- Fuentes -->
+  <!-- Fuentes optimizadas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=43" />
+  <link rel="stylesheet" href="styles.css?v=50" />
 </head>
 <body>
   <a class="skip-link" href="#inicio">Saltar al contenido</a>
 
   <!-- Header -->
-  <header>
+  <header id="mainHeader">
     <div class="container nav" role="navigation" aria-label="Principal">
-      <!-- LOGO grande (150px desktop / 96px móvil) -->
       <a class="brand" href="#inicio" aria-label="Inicio">
-        <img
-          src="images/logo-familybrothers-horizontal.png"
-          alt="FamilyBrothers Propiedades — Logo"
-          class="brand-mark"
-          decoding="async"
-        />
+        <img src="images/logo-familybrothers-horizontal.png" alt="FamilyBrothers Propiedades" class="brand-mark" decoding="async" width="300" height="100" />
       </a>
 
-      <button id="menuBtn" class="menu-btn" aria-label="Abrir menú" aria-controls="siteNav" aria-expanded="false">☰ Menú</button>
+      <button id="menuBtn" class="menu-btn" aria-label="Abrir menú" aria-controls="siteNav" aria-expanded="false">
+        <span class="hamburger"></span>
+        <span class="menu-text">Menú</span>
+      </button>
 
       <nav id="siteNav">
         <ul>
-          <li><a href="#seguridad">Seguridad</a></li>
-          <li><a href="#confianza">Confianza</a></li>
-          <li><a href="#calculadora">Calculadora</a></li>
-          <li><a href="#publicaciones">Publicaciones</a></li>
-          <li><a href="#faq">Preguntas</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#seguridad" class="nav-link">Seguridad</a></li>
+          <li><a href="#confianza" class="nav-link">Confianza</a></li>
+          <li><a href="#calculadora" class="nav-link">Calculadora</a></li>
+          <li><a href="#publicaciones" class="nav-link">Publicaciones</a></li>
+          <li><a href="#faq" class="nav-link">Preguntas</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
       </nav>
-      <a class="btn alt" href="#contacto">Cotizar</a>
+      <a class="btn btn-primary" href="#contacto">
+        <span>Cotizar</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
 
     <div class="trust-bar">
       <div class="container trust-inner">
-        <span class="chip">Contrato exclusivo 90 días</span>
-        <span class="chip">Boleta electrónica</span>
-        <span class="chip">Abogado asociado</span>
-        <span class="chip">Oficinas San Rosario, Las Condes</span>
+        <span class="chip chip-gold"><span class="chip-icon">✓</span>Contrato exclusivo 90 días</span>
+        <span class="chip"><span class="chip-icon">✓</span>Boleta electrónica</span>
+        <span class="chip"><span class="chip-icon">✓</span>Abogado asociado</span>
+        <span class="chip"><span class="chip-icon">📍</span>San Rosario, Las Condes</span>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section id="inicio" class="hero has-bg">
-    <div class="hero-bg"></div>
+  <section id="inicio" class="hero">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+    </div>
 
-    <div class="container wrap">
-      <div>
-        <div class="chip">Transparencia • Proceso claro • Respaldo legal</div>
-        <h1 class="title gradient-underline">Comisión 2%, servicio premium</h1>
-        <p class="subtitle">
-          Modelo digital, contrato <strong>exclusivo</strong> (90 días) y
-          <strong>abogado asociado</strong>. Sin letra chica. Solicita tu <strong>cotización</strong>.
+    <div class="container hero-content">
+      <div class="hero-main">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          Transparencia • Proceso claro • Respaldo legal
+        </div>
+        
+        <h1 class="hero-title">
+          Comisión <span class="text-gradient">2%</span>,<br>
+          <span class="title-secondary">servicio premium</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          Modelo digital, contrato <strong>exclusivo</strong> (90 días) y <strong>abogado asociado</strong>. 
+          Sin letra chica. Solicita tu cotización.
         </p>
-        <div class="cta-row">
-          <a class="btn alt" href="#contacto">Cotizar ahora</a>
-          <a class="btn ghost" href="#seguridad">Ver seguridad</a>
+        
+        <div class="hero-cta">
+          <a class="btn btn-gold btn-lg" href="#contacto">
+            <span>Cotizar ahora</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn-outline-light" href="#seguridad">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Ver seguridad</span>
+          </a>
         </div>
 
         <div class="hero-kpis">
-          <div class="kpi glass">
-            <div class="kpi-num" data-count="50">0</div><div class="kpi-unit">+ UF</div>
-            <p class="muted">Ahorro típico vs 4% (10.000 UF)</p>
+          <div class="kpi-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="kpi-icon">💰</div>
+            <div class="kpi-content">
+              <div class="kpi-value">
+                <span class="kpi-num" data-count="50">0</span>
+                <span class="kpi-unit">+ UF</span>
+              </div>
+              <p class="kpi-label">Ahorro vs comisión 4%</p>
+            </div>
           </div>
-          <div class="kpi glass">
-            <div class="kpi-num" data-count="3">0</div><div class="kpi-unit">pasos</div>
-            <p class="muted">Captación simple</p>
+          
+          <div class="kpi-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="kpi-icon">⚡</div>
+            <div class="kpi-content">
+              <div class="kpi-value">
+                <span class="kpi-num" data-count="3">0</span>
+                <span class="kpi-unit">pasos</span>
+              </div>
+              <p class="kpi-label">Captación simple</p>
+            </div>
           </div>
-          <div class="kpi glass">
-            <div class="kpi-num" data-count="5">0</div><div class="kpi-unit">min</div>
-            <p class="muted">Tiempo de respuesta</p>
+          
+          <div class="kpi-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="kpi-icon">🚀</div>
+            <div class="kpi-content">
+              <div class="kpi-value">
+                <span class="kpi-num" data-count="5">0</span>
+                <span class="kpi-unit">min</span>
+              </div>
+              <p class="kpi-label">Tiempo de respuesta</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <aside class="hero-card glass pad">
-        <h3 class="mini">Lo que nos diferencia</h3>
-        <ul class="muted bulleted">
-          <li><strong>Comisión clara: 2%</strong> (vendedor). <strong>IVA 19%</strong>.</li>
-          <li><strong>Contrato exclusivo 90 días</strong> con metas y reportes semanales.</li>
-          <li>Boleta electrónica e informes de gestión.</li>
-          <li>Revisión legal en promesa y escritura.</li>
-        </ul>
+      <aside class="hero-features">
+        <div class="feature-card">
+          <h3 class="feature-title">¿Por qué elegirnos?</h3>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <span class="feature-check">✓</span>
+              <div>
+                <strong>Comisión transparente: 2%</strong> (vendedor) + IVA 19%
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-check">✓</span>
+              <div>
+                <strong>Contrato exclusivo 90 días</strong> con metas semanales
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-check">✓</span>
+              <div>
+                Boleta electrónica e informes de gestión detallados
+              </div>
+            </li>
+            <li class="feature-item">
+              <span class="feature-check">✓</span>
+              <div>
+                Revisión legal completa en promesa y escritura
+              </div>
+            </li>
+          </ul>
+          <div class="feature-footer">
+            <span class="guarantee-badge">🛡️ Garantía de seguridad</span>
+          </div>
+        </div>
       </aside>
+    </div>
+    
+    <div class="hero-scroll">
+      <div class="scroll-indicator">
+        <span>Descubre más</span>
+        <div class="scroll-arrow"></div>
+      </div>
     </div>
   </section>
 
-  <!-- Publicaciones (JPG simples) -->
-  <section id="publicaciones" class="reveal">
+  <!-- Publicaciones -->
+  <section id="publicaciones" class="section reveal">
     <div class="container">
-      <h2 class="title">Publicaciones</h2>
-      <p class="subtitle">Operaciones cerradas recientemente. ¿Publicamos la tuya?</p>
-
-      <div class="pub-grid">
-        <article class="pub-card card">
-          <div class="pub-media">
-            <span class="ribbon sold">VENDIDO</span>
-            <img src="images/casa-las-condes-01.jpg" alt="Casa moderna en Las Condes con jardín y piscina" loading="lazy" width="1200" height="900">
-          </div>
-          <div class="pub-body pad">
-            <h3 class="mini">Casa moderna — Las Condes</h3>
-            <p class="muted tiny">3D • 3B • 210 m² • 420 m² terreno</p>
-            <div class="pub-meta"><span class="chip">Publicada 18 días</span><span class="chip">Cierre 2025</span></div>
-            <div class="btn-row"><a class="btn ghost" href="#contacto">Cotizar similar</a></div>
-          </div>
-        </article>
-
-        <article class="pub-card card">
-          <div class="pub-media">
-            <span class="ribbon sold">VENDIDO</span>
-            <img src="images/casa-las-condes-02.jpg" alt="Casa familiar en Las Condes estilo contemporáneo" loading="lazy" width="1200" height="900">
-          </div>
-          <div class="pub-body pad">
-            <h3 class="mini">Casa familiar — Las Condes</h3>
-            <p class="muted tiny">4D • 3B • 240 m² • 500 m² terreno</p>
-            <div class="pub-meta"><span class="chip">Publicada 22 días</span><span class="chip">Cierre 2025</span></div>
-            <div class="btn-row"><a class="btn ghost" href="#contacto">Cotizar similar</a></div>
-          </div>
-        </article>
-
-        <article class="pub-card card">
-          <div class="pub-media">
-            <span class="ribbon sold">VENDIDO</span>
-            <img src="images/casa-vitacura.jpg" alt="Casa de lujo en Vitacura con fachada en piedra y vidrio" loading="lazy" width="1200" height="900">
-          </div>
-          <div class="pub-body pad">
-            <h3 class="mini">Casa de lujo — Vitacura</h3>
-            <p class="muted tiny">4D • 4B • 310 m² • 700 m² terreno</p>
-            <div class="pub-meta"><span class="chip">Publicada 30 días</span><span class="chip">Cierre 2025</span></div>
-            <div class="btn-row"><a class="btn ghost" href="#contacto">Cotizar similar</a></div>
-          </div>
-        </article>
+      <div class="section-header">
+        <span class="section-tag">Propiedades</span>
+        <h2 class="section-title">Publicaciones destacadas</h2>
+        <p class="section-subtitle">Propiedades disponibles actualmente en nuestra cartera</p>
       </div>
 
-      <div class="banner pad" style="margin-top:16px">
-        <span class="muted">¿Quieres ver tu propiedad aquí?</span>
-        <a class="btn alt" href="#contacto">Publicar propiedad</a>
+      <div class="properties-grid">
+        <!-- Propiedad 1 -->
+        <article class="property-card">
+          <div class="property-media">
+            <span class="property-badge">EN VENTA</span>
+            <button class="property-fav" aria-label="Guardar favorito">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <img src="images/props/fb-stgo-001/01.jpg" alt="Departamento San Francisco 335" loading="lazy" width="800" height="600">
+            <div class="property-overlay">
+              <span class="property-price">UF 3.850</span>
+            </div>
+          </div>
+          
+          <div class="property-content">
+            <div class="property-location">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Santiago Centro</span>
+            </div>
+            
+            <h3 class="property-title">Departamento 2D/2B — San Francisco 335</h3>
+            
+            <div class="property-specs">
+              <span class="spec">48 m² útiles</span>
+              <span class="spec-dot">•</span>
+              <span class="spec">52 m² totales</span>
+            </div>
+            
+            <div class="property-tags">
+              <span class="tag tag-metro">🚇 Metro cercano</span>
+              <span class="tag tag-inversion">📈 Ideal inversión</span>
+            </div>
+            
+            <a href="propiedad.html?id=FB-STGO-001" class="btn btn-property">
+              Ver propiedad
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Placeholder para más propiedades -->
+        <article class="property-card property-placeholder">
+          <div class="placeholder-content">
+            <div class="placeholder-icon">🏠</div>
+            <h3>¿Tienes una propiedad?</h3>
+            <p>Publica con nosotros y aprovecha nuestra comisión del 2%</p>
+            <a href="#contacto" class="btn btn-outline">Publicar ahora</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- Seguridad -->
-  <section id="seguridad" class="reveal">
+  <section id="seguridad" class="section section-alt reveal">
     <div class="container">
-      <h2 class="title">Seguridad para el dueño</h2>
-      <p class="subtitle">Confianza primero; condiciones claras siempre.</p>
-      <div class="grid">
-        <div class="col-6">
-          <div class="feature"><div class="badge">1</div><div><h3>Contrato exclusivo (90 días)</h3><p class="muted">Metas y reportes semanales. Control total del avance comercial.</p></div></div>
-          <div class="feature"><div class="badge">2</div><div><h3>Boleta electrónica</h3><p class="muted">Formalidad tributaria y trazabilidad de honorarios.</p></div></div>
-          <div class="feature"><div class="badge">3</div><div><h3>Abogado asociado</h3><p class="muted">Revisión de promesa y escritura para un cierre seguro.</p></div></div>
+      <div class="section-header center">
+        <span class="section-tag">Protección</span>
+        <h2 class="section-title">Seguridad para el dueño</h2>
+        <p class="section-subtitle">Confianza primero; condiciones claras siempre</p>
+      </div>
+
+      <div class="security-grid">
+        <div class="security-main">
+          <div class="security-card" data-step="1">
+            <div class="security-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="security-content">
+              <h3>Contrato exclusivo (90 días)</h3>
+              <p>Metas claras y reportes semanales detallados. Control total del avance comercial con indicadores de gestión.</p>
+              <ul class="security-list">
+                <li>Reporte de visitas cada 7 días</li>
+                <li>Análisis de feedback de potenciales compradores</li>
+                <li>Ajustes de estrategia según mercado</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="security-card" data-step="2">
+            <div class="security-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="security-content">
+              <h3>Boleta electrónica</h3>
+              <p>Formalidad tributaria completa y trazabilidad total de honorarios. Documentación respaldada digitalmente.</p>
+            </div>
+          </div>
+
+          <div class="security-card" data-step="3">
+            <div class="security-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div class="security-content">
+              <h3>Abogado asociado</h3>
+              <p>Revisión profesional de promesa y escritura para un cierre 100% seguro. Asesoría legal incluida sin costo extra.</p>
+            </div>
+          </div>
         </div>
-        <div class="col-6">
-          <div class="card pad soft">
-            <h3>Checklist de documentos</h3>
-            <ul class="muted bulleted">
-              <li>Certificado de dominio vigente</li>
-              <li>Hipotecas y gravámenes</li>
-              <li>Contribuciones/gastos comunes al día</li>
-              <li>Planos y recepción municipal (si aplica)</li>
-              <li>Inventario de mejoras / remodelaciones</li>
+
+        <div class="security-sidebar">
+          <div class="checklist-card">
+            <h3 class="checklist-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Checklist de documentos
+            </h3>
+            <p class="checklist-subtitle">Verificación gratuita incluida:</p>
+            <ul class="checklist-items">
+              <li class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Certificado de dominio vigente</span>
+              </li>
+              <li class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Hipotecas y gravámenes</span>
+              </li>
+              <li class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Contribuciones al día</span>
+              </li>
+              <li class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Planos y recepción municipal</span>
+              </li>
+              <li class="check-item">
+                <span class="check-icon">✓</span>
+                <span>Inventario de mejoras</span>
+              </li>
             </ul>
-            <a class="btn ghost" href="#contacto">Publicar mi propiedad</a>
+            <a href="#contacto" class="btn btn-dark btn-full">
+              Iniciar revisión
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Confianza (mapa con iframe directo) -->
-  <section id="confianza" class="confianza reveal">
+  <!-- Confianza -->
+  <section id="confianza" class="section reveal">
     <div class="container">
-      <h2 class="title">Confianza & Cumplimiento</h2>
-      <div class="grid">
-        <div class="col-6">
-          <div class="card pad">
-            <h3 class="mini">Quiénes somos</h3>
-            <p class="muted">Equipo profesional enfocado en <strong>marketing inmobiliario</strong> y <strong>acompañamiento legal</strong>.</p>
-            <ul class="muted trust-ul">
-              <li>Boleta electrónica por honorarios.</li>
-              <li>Contrato exclusivo, metas y reportes.</li>
-              <li>Revisión legal por abogado asociado.</li>
-              <li>Reportes de gestión y trazabilidad.</li>
-            </ul>
+      <div class="section-header center">
+        <span class="section-tag">Nosotros</span>
+        <h2 class="section-title">Confianza & Cumplimiento</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-header">
+            <div class="about-icon">👔</div>
+            <h3>Quiénes somos</h3>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="card pad">
-            <h3 class="mini">Oficinas</h3>
-            <p class="muted">San Rosario, Las Condes</p>
-            <div class="map-wrap">
-              <iframe class="gmap" loading="eager" referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Oficinas%20San%20Rosario%2C%20Las%20Condes&output=embed"
-                title="Mapa Oficina San Rosario"></iframe>
+          <p class="about-text">Equipo profesional enfocado en <strong>marketing inmobiliario</strong> de alto impacto y <strong>acompañamiento legal</strong> especializado.</p>
+          
+          <div class="about-features">
+            <div class="about-feature">
+              <span class="feature-dot"></span>
+              <span>Boleta electrónica por honorarios</span>
+            </div>
+            <div class="about-feature">
+              <span class="feature-dot"></span>
+              <span>Contrato exclusivo con metas claras</span>
+            </div>
+            <div class="about-feature">
+              <span class="feature-dot"></span>
+              <span>Revisión legal por abogado asociado</span>
+            </div>
+            <div class="about-feature">
+              <span class="feature-dot"></span>
+              <span>Reportes de gestión y trazabilidad</span>
             </div>
           </div>
+        </div>
+
+        <div class="about-card about-location">
+          <div class="about-header">
+            <div class="about-icon">📍</div>
+            <h3>Nuestras oficinas</h3>
+          </div>
+          <p class="location-address">San Rosario, Las Condes</p>
+          <div class="map-container">
+            <iframe 
+              src="https://www.google.com/maps?q=Oficinas%20San%20Rosario%2C%20Las%20Condes&output=embed" 
+              width="100%" 
+              height="300" 
+              style="border:0; border-radius: 12px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación oficinas FamilyBrothers">
+            </iframe>
+          </div>
+          <a href="https://maps.google.com/?q=San+Rosario,+Las+Condes" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cómo llegar
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Calculadora -->
-  <section id="calculadora" class="reveal">
+  <section id="calculadora" class="section section-calc reveal">
     <div class="container">
-      <h2 class="title">Calcula tu comisión (CLP)</h2>
-      <p class="subtitle">El <strong>vendedor</strong> paga la comisión. Por defecto: <strong>2%</strong> + <strong>IVA 19%</strong>.</p>
-
-      <div class="calc card pad">
-        <div class="calc-left">
-          <label for="precioCLP" class="calc-label">Precio de venta (CLP)</label>
-          <div class="input-clp"><span class="prefix">$</span><input id="precioCLP" class="input" type="text" inputmode="numeric" placeholder="350000000" aria-label="Precio de venta en pesos" /></div>
-          <p class="note muted">La comisión se calcula sobre el precio final. Comisión: <strong>2%</strong>. IVA aplicado: <strong>19%</strong>.</p>
+      <div class="calc-wrapper">
+        <div class="calc-header">
+          <span class="section-tag light">Simulador</span>
+          <h2 class="section-title light">Calcula tu comisión</h2>
+          <p class="section-subtitle light">El vendedor paga la comisión. Por defecto: <strong>2% + IVA 19%</strong></p>
         </div>
 
-        <div class="calc-right">
-          <div class="stat"><span class="muted">Subtotal (2%)</span><strong id="comisionBase">$0</strong></div>
-          <div class="stat"><span class="muted">IVA 19%</span><strong id="comisionIVA">$0</strong></div>
-          <div class="stat big"><span class="muted">Total</span><strong id="comisionTotal">$0</strong></div>
-
-          <div class="cta-stack">
-            <a class="btn alt" href="#contacto">Cotizar ahora</a>
-            <a class="btn ghost" id="calcWhats" href="#">Cotizar por WhatsApp</a>
+        <div class="calc-container">
+          <div class="calc-input-section">
+            <label for="precioCLP" class="calc-label">Precio de venta (CLP)</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">$</span>
+              <input 
+                type="text" 
+                id="precioCLP" 
+                class="calc-input" 
+                inputmode="numeric" 
+                placeholder="350.000.000"
+                autocomplete="off"
+              >
+            </div>
+            <p class="input-hint">Ingresa el valor de tu propiedad para calcular</p>
+            
+            <div class="quick-values">
+              <button class="quick-btn" data-value="250000000">UF 8.500</button>
+              <button class="quick-btn" data-value="350000000">UF 12.000</button>
+              <button class="quick-btn" data-value="500000000">UF 17.000</button>
+              <button class="quick-btn" data-value="750000000">UF 25.500</button>
+            </div>
           </div>
 
-          <p class="muted tiny" style="margin-top:8px">* IVA 19% aplicado para el cálculo.</p>
+          <div class="calc-results">
+            <div class="result-item">
+              <span class="result-label">Subtotal comisión (2%)</span>
+              <span class="result-value" id="comisionBase">$0</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">IVA 19%</span>
+              <span class="result-value" id="comisionIVA">$0</span>
+            </div>
+            <div class="result-divider"></div>
+            <div class="result-item result-total">
+              <span class="result-label">Total a pagar</span>
+              <span class="result-value" id="comisionTotal">$0</span>
+            </div>
+            
+            <div class="savings-box">
+              <div class="savings-icon">💡</div>
+              <div class="savings-content">
+                <strong>Ahorro estimado vs 4%</strong>
+                <span id="ahorroValor">$0</span>
+              </div>
+            </div>
+
+            <div class="calc-actions">
+              <a href="#contacto" class="btn btn-gold btn-full">
+                Cotizar ahora
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" class="btn btn-whatsapp btn-full" id="calcWhats">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Cotizar por WhatsApp
+              </a>
+            </div>
+            
+            <p class="calc-note">* IVA 19% aplicado. Valores referenciales.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="reveal">
+  <section id="faq" class="section section-alt reveal">
     <div class="container">
-      <h2 class="title">Preguntas frecuentes</h2>
-    <div class="accordion">
-      <button class="ac-item" aria-expanded="false" aria-controls="faq1" id="q1"><span>¿Por qué elegir una comisión competitiva?</span><i></i></button>
-      <div class="ac-panel" id="faq1" role="region" aria-labelledby="q1"><p>Operamos con un modelo digital y procesos eficientes, manteniendo un estándar profesional y foco en difusión efectiva.</p></div>
+      <div class="section-header center">
+        <span class="section-tag">Ayuda</span>
+        <h2 class="section-title">Preguntas frecuentes</h2>
+      </div>
 
-      <button class="ac-item" aria-expanded="false" aria-controls="faq2" id="q2"><span>¿El contrato es exclusivo?</span><i></i></button>
-      <div class="ac-panel" id="faq2" role="region" aria-labelledby="q2"><p>Sí. Exclusividad por 90 días con metas y reportes semanales del avance comercial.</p></div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Por qué elegir una comisión del 2%?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Operamos con un modelo digital eficiente que reduce costos operativos tradicionales. Esto nos permite ofrecer una comisión competitiva sin sacrificar calidad de servicio, manteniendo estándares profesionales y foco en difusión efectiva.</p>
+          </div>
+        </div>
 
-      <button class="ac-item" aria-expanded="false" aria-controls="faq3" id="q3"><span>¿Cómo resguardan el cierre?</span><i></i></button>
-      <div class="ac-panel" id="faq3" role="region" aria-labelledby="q3"><p>Un abogado asociado revisa promesa y escritura. Emitimos boleta electrónica por honorarios.</p></div>
-    </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿El contrato es realmente exclusivo?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Sí. La exclusividad es por 90 días con metas claras y reportes semanales del avance comercial. Esto nos permite enfocar todos nuestros recursos en vender tu propiedad sin conflictos de interés con otras corredoras.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>¿Cómo resguardan el cierre de la operación?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Contamos con un abogado asociado que revisa promesa y escritura. Además, emitimos boleta electrónica por honorarios, garantizando trazabilidad total y respaldo legal en cada etapa del proceso.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Contacto -->
-  <section id="contacto" class="reveal">
+  <section id="contacto" class="section reveal">
     <div class="container">
-      <h2 class="title">Hablemos</h2>
-      <p class="subtitle">Cuéntanos de tu propiedad y te enviamos una <strong>cotización</strong>.</p>
+      <div class="section-header center">
+        <span class="section-tag">Contacto</span>
+        <h2 class="section-title">Hablemos de tu propiedad</h2>
+        <p class="section-subtitle">Cuéntanos los detalles y te enviamos una cotización personalizada</p>
+      </div>
 
-      <div class="grid">
-        <div class="col-6">
-          <form id="contactForm" class="card pad" action="https://formsubmit.co/cristobalreimundotr@gmail.com" method="POST">
-            <div class="field"><label for="nombre">Nombre</label><input class="input" id="nombre" name="Nombre" placeholder="Tu nombre" required /></div>
-            <div class="field"><label for="email">Email</label><input class="input" id="email" name="Email" type="email" placeholder="tucorreo@ejemplo.com" required /></div>
-            <div class="field"><label for="mensaje">Mensaje</label><textarea class="input" id="mensaje" name="Mensaje" rows="5" placeholder="Comuna, m², dormitorios, precio aprox…" required></textarea></div>
-            <div class="btn-row"><button class="btn dark" type="submit">Enviar</button><a class="btn ghost" id="whatsBtn" href="#">WhatsApp directo</a></div>
-            <p id="formMsg" class="muted" role="status" aria-live="polite"></p>
-            <!-- FormSubmit ocultos -->
+      <div class="contact-grid">
+        <div class="contact-form-wrapper">
+          <form id="contactForm" class="contact-form" action="https://formsubmit.co/cristobalreimundotr@gmail.com" method="POST">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="Nombre" class="form-input" placeholder="Tu nombre" required>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" class="form-input" placeholder="tucorreo@ejemplo.com" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="Telefono" class="form-input" placeholder="+56 9 33857105">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="mensaje">Cuéntanos sobre tu propiedad</label>
+              <textarea id="mensaje" name="Mensaje" class="form-input form-textarea" rows="4" placeholder="Comuna, metros cuadrados, dormitorios, precio aproximado..." required></textarea>
+            </div>
+
+            <div class="form-footer">
+              <button type="submit" class="btn btn-gold btn-lg btn-full">
+                Enviar solicitud
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              </button>
+              <p id="formMsg" class="form-message"></p>
+            </div>
+
+            <!-- FormSubmit config -->
             <input type="hidden" name="_subject" value="Nueva cotización — FamilyBrothers">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
@@ -293,14 +557,47 @@
           </form>
         </div>
 
-        <div class="col-6">
-          <div class="card pad">
-            <h3>Datos de contacto</h3>
-            <p class="muted">Email: <a href="mailto:contacto@familybrothers.cl">contacto@familybrothers.cl</a></p>
-            <p class="muted">Teléfono/WhatsApp: <a href="#" id="phoneLink">+56 9 7370 6611</a></p>
-            <p class="muted">Oficinas: San Rosario, Las Condes</p>
-            <p class="muted">Horario: L–V 09:00–19:00</p>
-            <div class="chips"><span class="chip">Boleta electrónica</span><span class="chip">Contrato exclusivo</span><span class="chip">Abogado asociado</span></div>
+        <div class="contact-info">
+          <div class="info-card">
+            <h3>Información de contacto</h3>
+            
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div>
+                <span class="info-label">Email</span>
+                <a href="mailto:contacto@familybrothers.cl" class="info-value">contacto@familybrothers.cl</a>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">📱</div>
+              <div>
+                <span class="info-label">WhatsApp</span>
+                <a href="#" id="phoneLink" class="info-value">+56 9 7370 6611</a>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div>
+                <span class="info-label">Dirección</span>
+                <span class="info-value">San Rosario, Las Condes</span>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">🕐</div>
+              <div>
+                <span class="info-label">Horario</span>
+                <span class="info-value">Lunes a Viernes: 09:00 – 19:00</span>
+              </div>
+            </div>
+
+            <div class="info-badges">
+              <span class="info-badge">✓ Boleta electrónica</span>
+              <span class="info-badge">✓ Contrato exclusivo</span>
+              <span class="info-badge">✓ Abogado asociado</span>
+            </div>
           </div>
         </div>
       </div>
@@ -308,13 +605,29 @@
   </section>
 
   <!-- Footer -->
-  <footer>
-    <div class="container foot">
-      <div class="muted">© <span id="year"></span> FamilyBrothers. Todos los derechos reservados.</div>
-      <div class="links"><a class="muted" href="#inicio">Inicio</a><span class="muted">·</span><a class="muted" href="#seguridad">Seguridad</a><span class="muted">·</span><a class="muted" href="#contacto">Contacto</a></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="images/logo-familybrothers-horizontal.png" alt="FamilyBrothers" class="footer-logo" width="200">
+          <p class="footer-tagline">Comisión 2% con respaldo legal</p>
+        </div>
+        
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#seguridad">Seguridad</a>
+          <a href="#calculadora">Calculadora</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> FamilyBrothers. Todos los derechos reservados.</p>
+        <p class="footer-legal">Las Condes, Santiago de Chile</p>
+      </div>
     </div>
   </footer>
 
-  <script src="app.js?v=43" defer></script>
+  <script src="app.js?v=50" defer></script>
 </body>
 </html>
