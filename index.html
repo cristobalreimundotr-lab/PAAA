@@ -15,7 +15,6 @@
   <meta property="og:url" content="https://familybrothers.cl">
   <meta property="og:image" content="https://familybrothers.cl/images/og-cover.jpg">
 
-  <!-- Fuentes optimizadas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -187,17 +186,32 @@
       </div>
 
       <div class="properties-grid">
-        <!-- Propiedad 1 -->
+
+        <!-- Propiedad 1 — VENDIDO -->
         <article class="property-card">
           <div class="property-media">
-            <span class="property-badge">EN VENTA</span>
+
+            <span class="property-badge property-badge--sold">VENDIDO</span>
+
             <button class="property-fav" aria-label="Guardar favorito">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
-           <img src="images/35924.jpg" alt="Departamento San Francisco 335" loading="lazy" width="800" height="600">
-            <div class="property-overlay">
-              <span class="property-price">UF 1.269
+
+            <img src="images/35924.jpg" alt="Departamento San Francisco 335" loading="lazy" width="800" height="600">
+
+            <!-- OVERLAY VENDIDO — debe estar DENTRO de .property-media -->
+            <div class="sold-overlay">
+              <div class="sold-stamp">
+                <span class="sold-stamp__line">✦ ✦ ✦</span>
+                <span class="sold-stamp__text">Vendido</span>
+                <span class="sold-stamp__line">✦ ✦ ✦</span>
+              </div>
             </div>
+
+            <div class="property-overlay">
+              <span class="property-price">UF 1.269</span>
+            </div>
+
           </div>
           
           <div class="property-content">
@@ -206,8 +220,7 @@
               <span>Santiago Centro</span>
             </div>
             
-            <h3 class="property-title">Departamento Home Studio
-               — San Francisco 335</h3>
+            <h3 class="property-title">Departamento Home Studio — San Francisco 335</h3>
             
             <div class="property-specs">
               <span class="spec">21 m² útiles</span>
@@ -236,6 +249,7 @@
             <a href="#contacto" class="btn btn-outline">Publicar ahora</a>
           </div>
         </article>
+
       </div>
     </div>
   </section>
@@ -517,8 +531,8 @@
 
       <div class="contact-grid">
         <div class="contact-form-wrapper">
-        <form id="contactForm" class="contact-form"
-action="https://formsubmit.co/familybrotherspropiedades@gmail.com"method="POST">
+          <form id="contactForm" class="contact-form"
+            action="https://formsubmit.co/familybrotherspropiedades@gmail.com" method="POST">
             <div class="form-group">
               <label for="nombre">Nombre completo</label>
               <input type="text" id="nombre" name="Nombre" class="form-input" placeholder="Tu nombre" required>
@@ -548,7 +562,6 @@ action="https://formsubmit.co/familybrotherspropiedades@gmail.com"method="POST">
               <p id="formMsg" class="form-message"></p>
             </div>
 
-            <!-- FormSubmit config -->
             <input type="hidden" name="_subject" value="Nueva cotización — FamilyBrothers">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
@@ -567,7 +580,7 @@ action="https://formsubmit.co/familybrotherspropiedades@gmail.com"method="POST">
               <div class="info-icon">📧</div>
               <div>
                 <span class="info-label">Email</span>
-             <a href="mailto:familybrotherspropiedades@gmail.com" class="info-value">familybrotherspropiedades@gmail.com</a>
+                <a href="mailto:familybrotherspropiedades@gmail.com" class="info-value">familybrotherspropiedades@gmail.com</a>
               </div>
             </div>
             

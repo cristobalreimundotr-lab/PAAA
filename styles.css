@@ -1942,3 +1942,58 @@ html, body {
     height: auto;
   }
 }
+/* ========= BADGE VENDIDO ========= */
+.property-badge--sold {
+  background: linear-gradient(135deg, #1a1f2e 0%, #0a0e1a 100%);
+  color: var(--color-gold-light);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+}
+
+/* ========= OVERLAY VENDIDO ========= */
+.sold-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 26, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+}
+
+.property-card:hover .sold-overlay {
+  opacity: 0.85;
+}
+
+.sold-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid rgba(212, 175, 55, 0.7);
+  border-radius: 6px;
+  padding: 14px 28px;
+  background: rgba(10, 14, 26, 0.6);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.15), inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.sold-stamp__text {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.sold-stamp__line {
+  font-size: 0.6rem;
+  color: rgba(212, 175, 55, 0.6);
+  letter-spacing: 0.3em;
+}
