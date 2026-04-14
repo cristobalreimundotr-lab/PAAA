@@ -1,0 +1,36 @@
+@import "../styles.css";
+
+:root {
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-dm-sans: "DM Sans", system-ui, sans-serif;
+}
+
+html {
+  scroll-padding-top: 120px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-dm-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-dm {
+  font-family: var(--font-dm-sans);
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}

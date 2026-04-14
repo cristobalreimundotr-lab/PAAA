@@ -39,7 +39,7 @@
       <nav id="siteNav">
         <ul>
           <li><a href="#seguridad" class="nav-link">Seguridad</a></li>
-          <li><a href="#confianza" class="nav-link">Confianza</a></li>
+          <li><a href="quienes-somos.html" class="nav-link">Quienes somos</a></li>
           <li><a href="#calculadora" class="nav-link">Calculadora</a></li>
           <li><a href="#publicaciones" class="nav-link">Publicaciones</a></li>
           <li><a href="#faq" class="nav-link">Preguntas</a></li>
@@ -52,14 +52,6 @@
       </a>
     </div>
 
-    <div class="trust-bar">
-      <div class="container trust-inner">
-        <span class="chip chip-gold"><span class="chip-icon">✓</span>Contrato exclusivo 90 días</span>
-        <span class="chip"><span class="chip-icon">✓</span>Boleta electrónica</span>
-        <span class="chip"><span class="chip-icon">✓</span>Abogado asociado</span>
-        <span class="chip"><span class="chip-icon">📍</span>San Rosario, Las Condes</span>
-      </div>
-    </div>
   </header>
 
   <!-- Hero -->
@@ -183,6 +175,12 @@
         <span class="section-tag">Propiedades</span>
         <h2 class="section-title">Publicaciones destacadas</h2>
         <p class="section-subtitle">Propiedades disponibles actualmente en nuestra cartera</p>
+        <div class="section-actions">
+          <a href="quienes-somos.html" class="btn btn-outline">
+            Conocer al equipo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
 
       <div class="properties-grid">
@@ -199,7 +197,6 @@
 
             <img src="images/35924.jpg" alt="Departamento San Francisco 335" loading="lazy" width="800" height="600">
 
-            <!-- OVERLAY VENDIDO — debe estar DENTRO de .property-media -->
             <div class="sold-overlay">
               <div class="sold-stamp">
                 <span class="sold-stamp__line">✦ ✦ ✦</span>
@@ -234,6 +231,62 @@
             </div>
             
             <a href="propiedad.html?id=FB-STGO-001" class="btn btn-property">
+              Ver propiedad
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- =====================================================
+             NUEVA PROPIEDAD — Parcela Paine FB-PAINE-001
+             ===================================================== -->
+        <article class="property-card">
+          <div class="property-media">
+
+            <span class="property-badge property-badge--sale">EN VENTA</span>
+
+            <button class="property-fav" aria-label="Guardar favorito">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+
+            <!-- Reemplaza esta imagen con la foto real de la parcela -->
+            <img src="images/parcela-paine.jpg" alt="Parcela con casa en Paine — 5.000 m²" loading="lazy" width="800" height="600"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <!-- Fallback si no hay foto aún -->
+            <div class="property-img-placeholder" style="display:none; align-items:center; justify-content:center; height:220px; background:linear-gradient(135deg,#1a2a1a,#0b1a0b); flex-direction:column; gap:0.5rem;">
+              <span style="font-size:3rem;">🌿</span>
+              <span style="color:#a0b8a0; font-size:0.85rem;">Foto próximamente</span>
+            </div>
+
+            <div class="property-overlay">
+              <span class="property-price">UF 7.500</span>
+            </div>
+
+          </div>
+          
+          <div class="property-content">
+            <div class="property-location">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Paine · 58 km de Santiago</span>
+            </div>
+            
+            <h3 class="property-title">Parcela con Casa — Piscina y Chimenea</h3>
+            
+            <div class="property-specs">
+              <span class="spec">5.000 m² terreno</span>
+              <span class="spec-dot">•</span>
+              <span class="spec">170 m² construidos</span>
+              <span class="spec-dot">•</span>
+              <span class="spec">4 hab · 2 baños</span>
+            </div>
+            
+            <div class="property-tags">
+              <span class="tag tag-nature">🌿 5.000 m² terreno</span>
+              <span class="tag tag-pool">🏊 Piscina</span>
+              <span class="tag tag-fire">🔥 Chimenea</span>
+            </div>
+            
+            <a href="parcela-paine.html" class="btn btn-property">
               Ver propiedad
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -340,64 +393,32 @@
     </div>
   </section>
 
-  <!-- Confianza -->
-  <section id="confianza" class="section reveal">
+  <!-- Marca -->
+  <section class="section reveal brand-proof">
     <div class="container">
-      <div class="section-header center">
-        <span class="section-tag">Nosotros</span>
-        <h2 class="section-title">Confianza & Cumplimiento</h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="about-header">
-            <div class="about-icon">👔</div>
-            <h3>Quiénes somos</h3>
-          </div>
-          <p class="about-text">Equipo profesional enfocado en <strong>marketing inmobiliario</strong> de alto impacto y <strong>acompañamiento legal</strong> especializado.</p>
-          
-          <div class="about-features">
-            <div class="about-feature">
-              <span class="feature-dot"></span>
-              <span>Boleta electrónica por honorarios</span>
-            </div>
-            <div class="about-feature">
-              <span class="feature-dot"></span>
-              <span>Contrato exclusivo con metas claras</span>
-            </div>
-            <div class="about-feature">
-              <span class="feature-dot"></span>
-              <span>Revisión legal por abogado asociado</span>
-            </div>
-            <div class="about-feature">
-              <span class="feature-dot"></span>
-              <span>Reportes de gestión y trazabilidad</span>
-            </div>
-          </div>
+      <div class="brand-proof-shell">
+        <div class="brand-proof-copy">
+          <span class="section-tag light">FamilyBrothers</span>
+          <h2 class="section-title light">Una propuesta mas <em>seria</em>, moderna y bien presentada</h2>
+          <div class="brand-proof-divider"></div>
+          <p class="section-subtitle light">Cuidamos la imagen, el seguimiento y el respaldo del proceso para que vender una propiedad se vea tan profesional como debe sentirse.</p>
         </div>
-
-        <div class="about-card about-location">
-          <div class="about-header">
-            <div class="about-icon">📍</div>
-            <h3>Nuestras oficinas</h3>
-          </div>
-          <p class="location-address">San Rosario, Las Condes</p>
-          <div class="map-container">
-            <iframe 
-              src="https://www.google.com/maps?q=Oficinas%20San%20Rosario%2C%20Las%20Condes&output=embed" 
-              width="100%" 
-              height="300" 
-              style="border:0; border-radius: 12px;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Ubicación oficinas FamilyBrothers">
-            </iframe>
-          </div>
-          <a href="https://maps.google.com/?q=San+Rosario,+Las+Condes" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Cómo llegar
-          </a>
+        <div class="brand-proof-grid">
+          <article class="brand-proof-card">
+            <span class="brand-proof-num">01</span>
+            <strong>Presentacion</strong>
+            <span>Publicaciones mejor trabajadas, narrativa comercial y una imagen mas premium.</span>
+          </article>
+          <article class="brand-proof-card">
+            <span class="brand-proof-num">02</span>
+            <strong>Gestion</strong>
+            <span>Seguimiento claro, comunicacion rapida y coordinacion comercial con criterio.</span>
+          </article>
+          <article class="brand-proof-card">
+            <span class="brand-proof-num">03</span>
+            <strong>Respaldo</strong>
+            <span>Boleta electronica, comision transparente y abogado asociado para cerrar con mas seguridad.</span>
+          </article>
         </div>
       </div>
     </div>
